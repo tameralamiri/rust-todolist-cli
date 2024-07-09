@@ -1,9 +1,9 @@
 use chrono::{serde::ts_seconds, DateTime, Local, Utc};
 use serde::{Deserialize, Serialize};
+use std::fmt;
 use std::fs::{File, OpenOptions};
 use std::io::{Error, ErrorKind, Result, Seek, SeekFrom};
 use std::path::PathBuf;
-use std::fmt;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Task {
@@ -87,7 +87,7 @@ pub fn list_tasks(journal_file: PathBuf) -> Result<()> {
         println!("Task list is empty.");
     } else {
         for (i, task) in tasks.iter().enumerate() {
-            println!("{}. {}", i + 1, task); 
+            println!("{}. {}", i + 1, task);
         }
     }
     Ok(())
